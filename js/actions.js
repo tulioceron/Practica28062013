@@ -1,6 +1,6 @@
 // actions
 var jQT = new $.jQTouch({
-	themeSelectionSelector: '#jqt #themes ul'
+	themeSelectionSelector: '#jqt'
 });
 	
 $(document).ready(function(e) {
@@ -8,7 +8,7 @@ $(document).ready(function(e) {
 		//Aceleròmetro
 		var ace = $('#acelerometro');
 		var watchID = null;
-		ace.children('.individual li').tap(function(){
+		ace.find('.individual li').tap(function(){
 			if($(this).index() == 0){
 			watchID = navigator.accelerometer.watchAcceleration(function(a){
 					ace.find('h2').text('Posición Actual');
@@ -25,14 +25,14 @@ $(document).ready(function(e) {
 				if(watchID){
 					ace.find('h2').text('Detenido');
 					ace.find('.pos').remove();
-					navigator.acelerometro.clearWatch(watchID);
+					navigator.accelerometro.clearWatch(watchID);
 					watchID = null;	
 				}
 			}
 		});
 		//Brújula
 		var bru = $('#brujula');
-		bru.children('.individual li').tap(function(){
+		bru.find('.individual li').tap(function(){
 			if($(this).index() == 0){
 			watchID = navigator.compass.watchHeading(function(h){
 					bru.find('h2').text('Posición Actual');
